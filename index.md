@@ -1,5 +1,18 @@
 ## Welcome to GitHub Pages
-
+<form id="fs-frm" name="survey-form" accept-charset="utf-8" action="https://formspree.io/f/{form_id}" method="post">
+  <fieldset id="fs-frm-inputs">
+    <fieldset id="fs-frm-selects">
+      <label for="timely">2. The quality of work was high in quality.</label>
+      <select name="quality" id="quality" required="">
+        <option value="Choose" selected="" disabled="">Choose</option>
+        <option value="1">Strongly Agree</option>
+        <option value="3">Agree</option>
+        <option value="5">Neutral</option>
+      </select>
+    </fieldset>
+  </fieldset>
+  <input type="submit" value="Send Responses">
+</form>
 You can use the [editor on GitHub](https://github.com/ckameuka5/OS-Lab5/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
