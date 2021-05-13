@@ -10,6 +10,7 @@
       <option value="2">Agree</option>
       <option value="3">Neutral</option>
     </select>
+    <br>
     <label for="timely">2. Enter count of days to watch .</label>
 <input type="text" name="days" id="dayscount" required="">
   <input type="submit" value="View">
