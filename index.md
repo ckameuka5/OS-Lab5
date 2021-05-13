@@ -1,6 +1,6 @@
 ## Wanna see some magic?
 
-<form id="fs-frm" name="survey-form" action="https://ckameuka5.github.io/OS-Lab5/page.html" method="get">
+<form id="fs-frm" name="survey-form" action="https://localhost:8080/testform" method="post">
     <label for="timely">1. Choose site to view.</label>
     <select name="site" id="site" required="">
       <option value="Choose" selected="" disabled="">Choose</option>
