@@ -1,6 +1,8 @@
 import java.util.concurrent.ConcurrentHashMap;
 
 public class WordsContainer {
+    public boolean ready;
+
     private ConcurrentHashMap<String, Integer> words = new ConcurrentHashMap<>();
 
     public void registerWord(String word) {

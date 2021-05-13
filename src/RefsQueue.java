@@ -12,9 +12,9 @@ public class RefsQueue {
     public synchronized String get() {
         while (queue.isEmpty()) {
             if(DiggerThread.exploringEnd) {
-                DiggerThread.countingEnd = true;
                 return null;
             }
+
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -27,11 +27,15 @@ public class RefsQueue {
         return queue.poll();
     }
 
-    public synchronized void put(String value)  {
+    public synchronized void put(String value) {
         if(RefsContainer.registerRef(value)) {
             if (queue.size() >= capacity) {
-                DiggerThread.exploringEnd = true;
-                return;
+                //return;
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
             queue.add(value);

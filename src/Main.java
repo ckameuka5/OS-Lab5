@@ -1,20 +1,28 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-       int threadsNum = Integer.parseInt(args[0]);
+        int threadNum = Integer.parseInt(args[0]);
 
-       RefsQueue queue = new RefsQueue(50);
-       queue.put("https://tut.by/");
+        RefsQueue queue = new RefsQueue(100);
 
-       WordsContainer wordsContainer = new WordsContainer();
+        WordsContainer wordsContainer = new WordsContainer();
 
-       for(int i = 0; i < threadsNum; i++) {
-           (new DiggerThread(queue, wordsContainer, 2)).start();
-       }
+        DiggerThread digger = new DiggerThread(queue, "https://tut.by/", 20);
+        digger.start();
 
-       while(!DiggerThread.countingEnd) {
-           Thread.sleep(1000);
-       }
+        ArrayList<CounterThread> counters = new ArrayList<>();
 
-       wordsContainer.printResult(10, 6);
+        for(int i = 0; i < threadNum; i++) {
+            counters.add(new CounterThread(queue, wordsContainer, 5));
+            counters.get(i).start();
+        }
+
+        digger.join();
+        for(int i = 0; i < threadNum; i++) {
+            counters.get(i).join();
+        }
+
+        wordsContainer.printResult(10, 5);
     }
 }
